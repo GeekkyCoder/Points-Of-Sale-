@@ -7,12 +7,15 @@
   font-family: "Poppins", sans-serif;
 }
 
-
 .app {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+}
+
+.dark {
+  background-color: black;
+  color: white;
 }
 
 .app-header {
@@ -23,6 +26,7 @@
   height: 80px;
   padding: 4px 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: white;
 }
 
 .app-header .logo {
@@ -34,10 +38,9 @@
 
 .sidebarandpagecontent {
   display: flex;
-  flex: 1;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 4px;
+  flex: 1;
 }
 
 .app-sidebar .sidebar-menu-link {
@@ -46,8 +49,13 @@
   letter-spacing: 2px;
 }
 
+.app-sidebar {
+  height: 100vh;
+}
+
 .page-content {
   padding-left: 12px;
+  margin: 3em;
 }
 
 .app-footer {

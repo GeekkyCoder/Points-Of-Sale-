@@ -1,12 +1,24 @@
-import { Space, Card, Typography, Statistic, Image, Divider } from "antd";
+import {
+  Space,
+  Card,
+  Typography,
+  Statistic,
+  Divider,
+  ConfigProvider,
+} from "antd";
 import {
   ShoppingCartOutlined,
   ShopOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 
-import AddonImage from "../../Assets/graph-1.png";
-import AddonImage2 from "../../Assets/graph-2.png";
+import { BarGraph } from "./BarGraph";
+import { PieGraph } from "./PieGraph";
+
+import CountUp from "react-countup";
+
+// import AddonImage from "../../Assets/graph-1.png";
+// import AddonImage2 from "../../Assets/graph-2.png";
 
 export const Dashboard = () => {
   return (
@@ -30,42 +42,39 @@ export const Dashboard = () => {
             icon={<UserOutlined />}
           />
         </Space>
+
         <Divider />
-        <Graphs />
+
+        <Space direction="horizontal" size={"large"}>
+          <Card style={{ border: "1px solid gray" }}>
+            <BarGraph />
+          </Card>
+          <Card style={{ border: "1px solid gray" }}>
+            <PieGraph />
+          </Card>
+        </Space>
       </div>
     </>
   );
 };
 
 const DashboardCards = ({ title, value, icon }) => {
+  const formatter = (value) => (
+    <CountUp end={value} separator="," duration={2.75} />
+  );
+
   return (
     <Space direction="horizontal">
       <Card>
         <Space>
           {icon}
-          <Statistic title={title} value={value} />
+          <Statistic
+            style={{ background: "white", padding: "2em",borderRadius:'50px' }}
+            title={title}
+            value={value}
+            formatter={formatter}
+          />
         </Space>
-      </Card>
-    </Space>
-  );
-};
-
-const Graphs = () => {
-  return (
-    <Space
-      size={"large"}
-      direction="horizontal"
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <Card>
-        <Image src={AddonImage} alt="addon-png" preview={false}></Image>
-      </Card>
-      <Card>
-        <Image src={AddonImage} alt="addon-png" preview={false}></Image>
       </Card>
     </Space>
   );

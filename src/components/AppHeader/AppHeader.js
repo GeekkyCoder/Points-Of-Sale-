@@ -1,9 +1,35 @@
 import { Image, Typography, Space, Button } from "antd";
+import { ThemeSwitchControl } from "./ThemeSwitch";
+
+import { useContext } from "react";
+import { Context } from "../../context/theme.context";
+import { useNavigate } from "react-router-dom";
 
 export const AppHeader = () => {
+  const navigate = useNavigate();
+
+  const handleRedirect = (e) => {
+    const { textContent } = e.target;
+    
+    if (textContent == "Dashboard") {
+      navigate("/");
+    } else if (textContent == "Sale") {
+      navigate("/sale");
+    } else {
+      return;
+    }
+  };
+
+  const theme = useContext(Context);
+
   return (
     <>
-      <div className="app-header">
+      <div
+        className="app-header"
+        style={{
+          borderBottom: `${Object.keys(theme).length ? "1px solid gray" : ""}`,
+        }}
+      >
         <Image
           preview={false}
           className="logo"
@@ -11,13 +37,14 @@ export const AppHeader = () => {
           alt="logo-png"
         ></Image>
         <Typography.Title level={3}>DASHBOARD</Typography.Title>
-        <Space>
-          <Button type="primary" href="#">
-            Dashboard
-          </Button>
-          <Button type="primary" href="#">
-            Sell
-          </Button>
+        <Space
+          style={{ marginRight: "2em" }}
+          size={"large"}
+          onClick={handleRedirect}
+        >
+          <ThemeSwitchControl />
+          <Button type="primary">Dashboard</Button>
+          <Button type="primary">Sale</Button>
         </Space>
       </div>
     </>
