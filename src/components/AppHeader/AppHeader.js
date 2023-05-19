@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const AppHeader = () => {
   const navigate = useNavigate();
-  const { theme, currentView, setCurrentView } = useContext(Context);
+  const { theme, currentView,updateCurrentView } = useContext(Context);
 
   const handleRedirect = (e) => {
     const { textContent } = e.target;
@@ -21,10 +21,6 @@ export const AppHeader = () => {
     } else {
       return;
     }
-  };
-
-  const updateCurrentView = (view) => {
-    setCurrentView(view);
   };
 
   return (

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "../Pages/Dashboard/Dashboard";
-import { Sale } from "../Pages/Sale/Sale";
-import { Orders } from "../Pages/Orders/Orders";
-import { Customers } from "../Pages/Customers/Customers";
+import { Dashboard } from "../features/Dashboard/Dashboard";
+import { Sale } from "../features/Sale/Sale";
+import { Orders } from "../features/Orders/Orders";
+import { Customers } from "../features/Customers/Customers";
 
 export const AppRoutes = () => {
   return (

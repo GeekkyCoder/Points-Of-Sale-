@@ -1,4 +1,4 @@
-import { Button, Menu,Card } from "antd";
+import { Button, Menu, Card } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
   DashboardOutlined,
@@ -11,27 +11,41 @@ import {
 
 import { useContext } from "react";
 import { Context } from "../../context/theme.context";
+import { capitalizeFirstLetter } from "../../utils";
 
 export const AppSideBar = () => {
   const navigate = useNavigate();
 
-  const { theme, toggleMenuCollapse, handleToggleMenuCollapse } =
-    useContext(Context);
+  const {
+    theme,
+    toggleMenuCollapse,
+    handleToggleMenuCollapse,
+    updateCurrentView,
+  } = useContext(Context);
 
-  console.log(toggleMenuCollapse);
+  const handleMenuItemClick = (item) => {
+    navigate(item.key);
+    let viewText = item.key.split("/")[1];
+    if (item.key === "/") {
+      updateCurrentView("Dashboard");
+      return;
+    }
+    viewText = capitalizeFirstLetter(viewText);
+    updateCurrentView(viewText);
+  };
 
   return (
     <>
       <Card>
-      <Button
-        type="primary"
-        onClick={handleToggleMenuCollapse}
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        {toggleMenuCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </Button>
+        <Button
+          type="primary"
+          onClick={handleToggleMenuCollapse}
+          style={{
+            marginBottom: 16,
+          }}
+        >
+          {toggleMenuCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </Button>
       </Card>
       <Menu
         className="app-sidebar"
@@ -41,9 +55,7 @@ export const AppSideBar = () => {
           borderRight: `${Object.keys(theme).length ? "1px solid gray" : ""}`,
         }}
         defaultOpenKeys={["dashbaord"]}
-        onClick={(item) => {
-          navigate(item.key);
-        }}
+        onClick={handleMenuItemClick}
         items={[
           {
             label: <span className="sidebar-menu-link">Dashboard</span>,

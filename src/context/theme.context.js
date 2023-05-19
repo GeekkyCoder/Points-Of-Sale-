@@ -30,8 +30,13 @@ const ContextProvider = ({ children }) => {
    setToggleMenuCollapse(!toggleMenuCollapse)
  }
 
+ 
+ const updateCurrentView = (view) => {
+  setCurrentView(view);
+};
+
   return (
-    <Context.Provider value={{theme,handleThemeSwitchControll,toggleMenuCollapse,handleToggleMenuCollapse,currentView,setCurrentView}}>{children}</Context.Provider>
+    <Context.Provider value={{theme,handleThemeSwitchControll,toggleMenuCollapse,handleToggleMenuCollapse,currentView,updateCurrentView}}>{children}</Context.Provider>
   );
 };
 
