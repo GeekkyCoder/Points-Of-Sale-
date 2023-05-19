@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ConfigProvider } from "antd";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ContextProvider } from "./context/theme.context";
 

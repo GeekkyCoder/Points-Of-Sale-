@@ -58,6 +58,24 @@
   margin: 3em;
 }
 
+.graph-container{
+  margin-left: 5em;
+}
+
+.dashboard-graph-card-bar{
+  width: 700px;
+  border: 1px solid gray;
+}
+
+.dashboard-graph-card-pie{
+  width: 500px;
+  border: 1px solid gray;
+}
+
+.dashboard-icon{
+  font-size: 22px;
+}
+
 .app-footer {
   display: flex;
   justify-content: space-evenly;

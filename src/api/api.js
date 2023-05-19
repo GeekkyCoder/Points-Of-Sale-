@@ -1,3 +1,5 @@
+import { message } from "antd";
+
 // provide urls for getting data from backend!
 
 /*
@@ -16,8 +18,19 @@
 const LEADS_API = "https://dummyjson.com/products";
 
 export const getSalesStats = async () => {
-  const resp = await fetch(LEADS_API);
-  const jsonData = await resp.json();
+  try{
+    const resp = await fetch(LEADS_API);
+    const jsonData = await resp.json();
+
+    const data = {
+      onlineSales: jsonData.products.map((data) => data.discountPercentage),
+      offlineSales: jsonData.products.map((data) => data.discountPercentage),
+    };  
+    return data;
+  
+  }catch(err){
+    message.error(`${err.message} sales stats`)
+  }
 
   // change this code according to api response:
   //   return format:
@@ -29,14 +42,4 @@ export const getSalesStats = async () => {
 
     */
 
-  //*  uncomment to check it out
-
-  const data = {
-    onlineSales: jsonData.products.map((data) => data.discountPercentage),
-    offlineSales: jsonData.products.map((data) => data.discountPercentage),
-  };
-
-  // return {}
-
-  return data;
 };

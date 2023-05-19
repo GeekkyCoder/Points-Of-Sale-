@@ -1,5 +1,3 @@
-import { Space } from "antd";
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -71,7 +69,6 @@ export const BarGraph = () => {
           },
         ],
       };
-
       setDataSource(data);
     };
     fetchGraphData();

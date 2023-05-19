@@ -1,11 +1,4 @@
-import {
-  Space,
-  Card,
-  Typography,
-  Statistic,
-  Divider,
-  ConfigProvider,
-} from "antd";
+import { Space, Card, Typography, Statistic, Divider } from "antd";
 import {
   ShoppingCartOutlined,
   ShopOutlined,
@@ -17,9 +10,6 @@ import { PieGraph } from "./PieGraph";
 
 import CountUp from "react-countup";
 
-// import AddonImage from "../../Assets/graph-1.png";
-// import AddonImage2 from "../../Assets/graph-2.png";
-
 export const Dashboard = () => {
   return (
     <>
@@ -29,27 +19,27 @@ export const Dashboard = () => {
           <DashboardCards
             title={"orders"}
             value={1000}
-            icon={<ShoppingCartOutlined />}
+            icon={<ShoppingCartOutlined className="dashboard-icon" />}
           />
           <DashboardCards
             title={"sales"}
             value={5000}
-            icon={<ShopOutlined />}
+            icon={<ShopOutlined className="dashboard-icon" />}
           />
           <DashboardCards
             title={"customers"}
             value={2000}
-            icon={<UserOutlined />}
+            icon={<UserOutlined className="dashboard-icon" />}
           />
         </Space>
 
         <Divider />
 
-        <Space direction="horizontal" size={"large"}>
-          <Card style={{ border: "1px solid gray" }}>
+        <Space className="graph-container" direction="vertical" size={"large"}>
+          <Card className="dashboard-graph-card-bar">
             <BarGraph />
           </Card>
-          <Card style={{ border: "1px solid gray" }}>
+          <Card className="dashboard-graph-card-pie">
             <PieGraph />
           </Card>
         </Space>
@@ -66,10 +56,14 @@ const DashboardCards = ({ title, value, icon }) => {
   return (
     <Space direction="horizontal">
       <Card>
-        <Space>
+        <Space size={"large"}>
           {icon}
           <Statistic
-            style={{ background: "white", padding: "2em",borderRadius:'50px' }}
+            style={{
+              background: "white",
+              padding: "2em",
+              borderRadius: "50px",
+            }}
             title={title}
             value={value}
             formatter={formatter}

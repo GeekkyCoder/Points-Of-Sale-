@@ -13,6 +13,7 @@ const darkTheme = {
 const ContextProvider = ({ children }) => {
 
  const [theme,setTheme] = useState({})
+ const [currentView,setCurrentView] = useState('Dashboard')
  const [toggleMenuCollapse,setToggleMenuCollapse] = useState(false)
 
  const handleThemeSwitchControll = (value) => {
@@ -30,7 +31,7 @@ const ContextProvider = ({ children }) => {
  }
 
   return (
-    <Context.Provider value={{theme,handleThemeSwitchControll,toggleMenuCollapse,handleToggleMenuCollapse}}>{children}</Context.Provider>
+    <Context.Provider value={{theme,handleThemeSwitchControll,toggleMenuCollapse,handleToggleMenuCollapse,currentView,setCurrentView}}>{children}</Context.Provider>
   );
 };
 
