@@ -6,7 +6,7 @@ import { PageContent } from "./components/PageContent/PageContent";
 import { AppFooter } from "./components/AppFooter/AppFooter";
 
 import { useContext } from "react";
-import { Context } from "./context/theme.context";
+import { Context } from "./context/theme/theme.context";
 
 function App() {
   const { theme } = useContext(Context);

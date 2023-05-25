@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 
 import { useContext } from "react";
-import { Context } from "../../context/theme.context";
+import { Context } from "../../context/theme/theme.context";
 import { capitalizeFirstLetter } from "../../utils";
 
 export const AppSideBar = () => {

@@ -2,7 +2,7 @@ import { Image, Typography, Space, Button } from "antd";
 import { ThemeSwitchControl } from "./ThemeSwitch";
 
 import { useContext } from "react";
-import { Context } from "../../context/theme.context";
+import { Context } from "../../context/theme/theme.context";
 import { useNavigate } from "react-router-dom";
 
 export const AppHeader = () => {

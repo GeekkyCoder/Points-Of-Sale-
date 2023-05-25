@@ -1,7 +1,7 @@
 import {Switch } from "antd";
 
 import { useContext } from "react";
-import { Context } from "../../context/theme.context";
+import { Context } from "../../context/theme/theme.context";
 
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
