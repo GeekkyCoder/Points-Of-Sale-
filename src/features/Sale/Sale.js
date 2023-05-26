@@ -1,13 +1,15 @@
-import { Typography } from "antd";
+import { Orders } from "./Orders";
+import { Tabs } from "./Tabs";
 
-import {TabsList} from "./TabsList"
-
+import { Divider, Typography } from "antd";
 
 export const Sale = () => {
-
-
-  return <>
-    <Typography.Title level={3}>Sale</Typography.Title>
-    <TabsList/>
-  </>;
+  return (
+    <>
+      <Typography.Title level={3}>Order List</Typography.Title>
+      <Orders />
+      <Divider/>
+      <Tabs/>
+    </>
+  );
 };

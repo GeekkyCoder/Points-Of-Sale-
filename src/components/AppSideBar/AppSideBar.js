@@ -36,7 +36,7 @@ export const AppSideBar = () => {
 
   return (
     <>
-      <Card>
+      <Card className="left">
         <Button
           type="primary"
           onClick={handleToggleMenuCollapse}
@@ -50,6 +50,7 @@ export const AppSideBar = () => {
       <Menu
         className="app-sidebar"
         mode="inline"
+        theme="dark"
         inlineCollapsed={toggleMenuCollapse}
         style={{
           borderRight: `${Object.keys(theme).length ? "1px solid gray" : ""}`,
