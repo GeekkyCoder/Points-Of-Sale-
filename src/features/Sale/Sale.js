@@ -1,7 +1,8 @@
 import { Orders } from "./Orders";
 import { Tabs } from "./Tabs";
+import {RightDrawer } from "./RightDrawer"
 
-import { Divider, Typography } from "antd";
+import { Divider, Drawer, Typography } from "antd";
 
 export const Sale = () => {
   return (
@@ -10,6 +11,7 @@ export const Sale = () => {
       <Orders />
       <Divider/>
       <Tabs/>
+      <RightDrawer/>
     </>
   );
 };

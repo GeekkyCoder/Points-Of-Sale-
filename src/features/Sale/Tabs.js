@@ -1,5 +1,6 @@
-import { Tabs as Tab, Typography } from "antd";
 import { useContext, useMemo, useState } from "react";
+
+import { Tabs as Tab, Typography, Image,Button } from "antd";
 import { Context as ProductContext } from "../../context/product/product.context";
 
 export const Tabs = () => {
@@ -9,15 +10,42 @@ export const Tabs = () => {
 
   const products = Products.filter((prod) => prod.tabIndex === tabIndex);
 
-  console.log(products);
-
   const productsJSX = useMemo(() => {
     return (
       <div>
         <Typography.Title>Menu</Typography.Title>
-        {products.map((prod) => {
-          return <div>{prod.name}</div>;
-        })}
+        <div className="product-list-container">
+          {products.map((prod) => {
+            return (
+              <div
+                className="product-list-card-container"
+                style={{ width: "45%" }}
+              >
+                <div className="left">
+                  <div>
+                  <Image style={{width:"100%",borderRadius:"12px"}}  src={prod.image} alt={prod.name}></Image>
+                  </div>
+                  <Typography.Paragraph className="product-price"><sup className="dollar">$</sup>{prod.price}</Typography.Paragraph>
+                </div>
+                <div className="right">
+                  <h3>{prod.name}</h3>
+                  <Typography.Paragraph className="product-description">{prod.description}</Typography.Paragraph>
+                  <div className="info-container">
+                    <Typography.Text className="product-availabe">
+                      {prod.available} Available
+                    </Typography.Text>
+                    <Typography.Paragraph className="product-sold">{prod.sold} Sold</Typography.Paragraph>
+                  </div>
+                  <div className="actions-container">
+                  <Button type="primary" shape="circle">+</Button>
+                  <Typography.Paragraph>1</Typography.Paragraph>
+                  <Button type="primary" shape="circle">-</Button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }, [tabIndex]);
@@ -26,17 +54,17 @@ export const Tabs = () => {
     {
       label: "Appetizer",
       key: 0,
-      children: <div>{productsJSX}</div>,
+      children: <>{productsJSX}</>,
     },
     {
       label: "Dessert",
       key: 1,
-      children: <div>{productsJSX}</div>,
+      children: <>{productsJSX}</>,
     },
     {
       label: "Beverages",
       key: 2,
-      children: <div>{productsJSX}</div>,
+      children: <>{productsJSX}</>,
     },
   ];
 
@@ -46,7 +74,7 @@ export const Tabs = () => {
         onChange={(tabIndex) => setTabIndex(tabIndex)}
         // defaultActiveKey="1"
         type="card"
-        size={"small"}
+        size={"large"}
         items={options}
       />
     </div>
