@@ -1,14 +1,14 @@
 import { useContext, useMemo, useState } from "react";
 
-import { Tabs as Tab, Typography, Image,Button } from "antd";
+import { Tabs as Tab, Typography, Image, Button } from "antd";
 import { Context as ProductContext } from "../../context/product/product.context";
 
 export const Tabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
-  const { Products } = useContext(ProductContext);
+  const { productItems, addToCart, allOrders } = useContext(ProductContext);
 
-  const products = Products.filter((prod) => prod.tabIndex === tabIndex);
+  const products = productItems.filter((prod) => prod.tabIndex === tabIndex);
 
   const productsJSX = useMemo(() => {
     return (
@@ -18,28 +18,48 @@ export const Tabs = () => {
           {products.map((prod) => {
             return (
               <div
+                key={prod.id}
                 className="product-list-card-container"
                 style={{ width: "45%" }}
               >
                 <div className="left">
                   <div>
-                  <Image style={{width:"100%",borderRadius:"12px"}}  src={prod.image} alt={prod.name}></Image>
+                    <Image
+                      style={{ width: "100%", borderRadius: "12px" }}
+                      src={prod.image}
+                      alt={prod.name}
+                    ></Image>
                   </div>
-                  <Typography.Paragraph className="product-price"><sup className="dollar">$</sup>{prod.price}</Typography.Paragraph>
+                  <Typography.Paragraph className="product-price">
+                    <sup className="dollar">$</sup>
+                    {prod.price}
+                  </Typography.Paragraph>
                 </div>
                 <div className="right">
                   <h3>{prod.name}</h3>
-                  <Typography.Paragraph className="product-description">{prod.description}</Typography.Paragraph>
+                  <Typography.Paragraph className="product-description">
+                    {prod.description}
+                  </Typography.Paragraph>
                   <div className="info-container">
                     <Typography.Text className="product-availabe">
                       {prod.available} Available
                     </Typography.Text>
-                    <Typography.Paragraph className="product-sold">{prod.sold} Sold</Typography.Paragraph>
+                    <Typography.Paragraph className="product-sold">
+                      {prod.sold} Sold
+                    </Typography.Paragraph>
                   </div>
                   <div className="actions-container">
-                  <Button type="primary" shape="circle">+</Button>
-                  <Typography.Paragraph>1</Typography.Paragraph>
-                  <Button type="primary" shape="circle">-</Button>
+                    <Button
+                      onClick={() => addToCart(prod)}
+                      type="primary"
+                      shape="circle"
+                    >
+                      +
+                    </Button>
+                    <Typography.Paragraph>0</Typography.Paragraph>
+                    <Button type="primary" shape="circle">
+                      -
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -48,7 +68,7 @@ export const Tabs = () => {
         </div>
       </div>
     );
-  }, [tabIndex]);
+  }, [tabIndex, allOrders]);
 
   const options = [
     {

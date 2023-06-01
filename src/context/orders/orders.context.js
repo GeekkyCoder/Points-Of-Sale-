@@ -1,12 +1,17 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-import Orders from "../../Orders.json";
+import OrderList from "../../Orders.json";
 
 const Context = createContext();
 
 const OrderContext = ({ children }) => {
+  const [orders, setOrders] = useState([]);
+
+
   return (
-    <Context.Provider value={{ Orders }}>{children}</Context.Provider>
+    <Context.Provider value={{ OrderList, orders }}>
+      {children}
+    </Context.Provider>
   );
 };
 
