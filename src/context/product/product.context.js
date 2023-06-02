@@ -1,8 +1,9 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 
 import Products from "../../MOCK_DATA.json";
 
 import { RemoveFromCart, addItemIntoCart } from "../../utils";
+import { message } from "antd";
 
 const Context = createContext();
 
@@ -16,6 +17,7 @@ const productReducer = (state,action) => {
 
   switch(type){
     case "ADD_ITEM_INTO_CART":
+      message.success("item added!")
       localStorage.setItem('orders', JSON.stringify(payload))
       return {
         ...state,
@@ -23,6 +25,7 @@ const productReducer = (state,action) => {
       }
     case 'REMOVE_ITEM_FROM_CART':
       localStorage.setItem('orders', JSON.stringify(payload))
+      message.warning("item deleted!")
       return {
         ...state, 
         allOrders:payload

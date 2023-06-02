@@ -170,6 +170,12 @@ body::-webkit-scrollbar {
   justify-content: space-between;
 }
 
+.orders {
+  height: 300px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
 .order-container,
 .order-actions-container,
 .order-action-left-container {

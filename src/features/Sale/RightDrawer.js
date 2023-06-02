@@ -1,18 +1,18 @@
 import { useState, useContext, useMemo } from "react";
 
+import { CustomerForm } from "./Form";
+
 import { Drawer, Typography, Image, Button, Divider } from "antd";
 
 import { Context as ProductContext } from "../../context/product/product.context";
-import { CustomerForm } from "./Form";
-import { Preview } from "@mui/icons-material";
 
 export const RightDrawer = () => {
-  const [open, setOpen] = useState(true);
+  const [isDraweropen, setIsDrawerrOpen] = useState(true);
 
   const { removeItemFromCart, allOrders } = useContext(ProductContext);
 
-  const handleClose = () => {
-    setOpen(!open);
+  const handleDrawerClose = () => {
+    setIsDrawerrOpen(!isDraweropen);
   };
 
   const handleFinish = (value) => {
@@ -28,6 +28,7 @@ export const RightDrawer = () => {
               <div className="order-container" key={order.id}>
                 <div className="order-left">
                   <Image
+                    style={{ borderRadius: "10px" }}
                     width={"100%"}
                     src={order.image}
                     alt={order.name}
@@ -36,10 +37,14 @@ export const RightDrawer = () => {
                 </div>
                 <div className="order-right">
                   <Typography.Paragraph
-                    style={{ fontWeight: "bold", fontSize: "1rem" }}
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                    }}
                   >
                     {order.name}
                   </Typography.Paragraph>
+
                   <div className="order-actions-container">
                     <div className="order-action-left-container">
                       <Button type="primary" shape="circle">
@@ -76,8 +81,8 @@ export const RightDrawer = () => {
     <>
       <Drawer
         placement="right"
-        onClose={handleClose}
-        open={open}
+        onClose={handleDrawerClose}
+        open={isDraweropen}
         autoFocus={false}
         mask={false}
       >
@@ -89,7 +94,7 @@ export const RightDrawer = () => {
 
         <CustomerForm handleFinish={handleFinish} />
 
-        {ordersItems}
+        <div className="orders">{ordersItems}</div>
       </Drawer>
     </>
   );

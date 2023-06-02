@@ -3,6 +3,8 @@ import { useContext, useMemo, useState } from "react";
 import { Tabs as Tab, Typography, Image, Button } from "antd";
 import { Context as ProductContext } from "../../context/product/product.context";
 
+import { PlusOutlined } from "@ant-design/icons";
+
 export const Tabs = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -52,13 +54,9 @@ export const Tabs = () => {
                     <Button
                       onClick={() => addToCart(prod)}
                       type="primary"
-                      shape="circle"
+                      icon={<PlusOutlined size={"large"} />}
                     >
-                      +
-                    </Button>
-                    <Typography.Paragraph>0</Typography.Paragraph>
-                    <Button type="primary" shape="circle">
-                      -
+                      ADD TO CART
                     </Button>
                   </div>
                 </div>
