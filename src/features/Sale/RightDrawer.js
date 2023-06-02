@@ -1,8 +1,10 @@
 import { useState, useContext, useMemo } from "react";
 
-import { Button, Drawer, Form, Input, Card, Typography } from "antd";
+import { Drawer, Typography, Image, Button, Divider } from "antd";
 
 import { Context as ProductContext } from "../../context/product/product.context";
+import { CustomerForm } from "./Form";
+import { Preview } from "@mui/icons-material";
 
 export const RightDrawer = () => {
   const [open, setOpen] = useState(true);
@@ -22,10 +24,48 @@ export const RightDrawer = () => {
       <>
         {allOrders.map((order) => {
           return (
-            <div key={order.id}>
-              {order.name}
-              <button onClick={() => removeItemFromCart(order)}>remove</button>
-            </div>
+            <>
+              <div className="order-container" key={order.id}>
+                <div className="order-left">
+                  <Image
+                    width={"100%"}
+                    src={order.image}
+                    alt={order.name}
+                    preview={false}
+                  />
+                </div>
+                <div className="order-right">
+                  <Typography.Paragraph
+                    style={{ fontWeight: "bold", fontSize: "1rem" }}
+                  >
+                    {order.name}
+                  </Typography.Paragraph>
+                  <div className="order-actions-container">
+                    <div className="order-action-left-container">
+                      <Button type="primary" shape="circle">
+                        -
+                      </Button>
+                      <Typography.Paragraph>
+                        {order.quantity}
+                      </Typography.Paragraph>
+                      <Button type="primary" shape="circle">
+                        +
+                      </Button>
+                    </div>
+
+                    <div className="order-action-right-container">
+                      <Typography.Paragraph
+                        style={{ fontWeight: "bold", fontSize: "1.2rem" }}
+                      >
+                        ${order.price}
+                      </Typography.Paragraph>
+                    </div>
+                  </div>
+                </div>
+                {/* <button onClick={() => removeItemFromCart(order)}>remove</button> */}
+              </div>
+              <Divider />
+            </>
           );
         })}
       </>
@@ -46,41 +86,9 @@ export const RightDrawer = () => {
         >
           Customer Information
         </Typography.Paragraph>
-        <Form
-          style={{
-            maxWidth: 300,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={handleFinish}
-          // onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            name="Customer Name"
-            rules={[
-              {
-                required: true,
-                message: "Please input Customer Name!",
-              },
-            ]}
-          >
-            <Input placeholder="Customer Name" />
-          </Form.Item>
 
-          <Form.Item
-            name="Select Table"
-            rules={[
-              {
-                required: true,
-                message: "can not be empty",
-              },
-            ]}
-          >
-            <Input placeholder="Select Table" />
-          </Form.Item>
-        </Form>
+        <CustomerForm handleFinish={handleFinish} />
+
         {ordersItems}
       </Drawer>
     </>

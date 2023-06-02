@@ -170,6 +170,26 @@ body::-webkit-scrollbar {
   justify-content: space-between;
 }
 
+.order-container,
+.order-actions-container,
+.order-action-left-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-left {
+  width: 30%;
+}
+
+.order-right {
+  width: 65%;
+}
+
+.order-action-left-container {
+  width: 50%;
+}
+
 .app-footer {
   display: flex;
   justify-content: space-evenly;

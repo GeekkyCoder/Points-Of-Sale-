@@ -8,7 +8,7 @@ const Context = createContext();
 
 const INITIAL_STATE = {
   productItems:Products,
-  allOrders:[]
+  allOrders: JSON.parse(localStorage.getItem('orders')) || []
 }
 
 const productReducer = (state,action) => {
@@ -16,11 +16,13 @@ const productReducer = (state,action) => {
 
   switch(type){
     case "ADD_ITEM_INTO_CART":
+      localStorage.setItem('orders', JSON.stringify(payload))
       return {
         ...state,
         allOrders:payload
       }
     case 'REMOVE_ITEM_FROM_CART':
+      localStorage.setItem('orders', JSON.stringify(payload))
       return {
         ...state, 
         allOrders:payload
