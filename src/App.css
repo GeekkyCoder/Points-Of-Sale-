@@ -196,6 +196,42 @@ body::-webkit-scrollbar {
   width: 50%;
 }
 
+.order-summary-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.sub-total-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-total-container  div {
+   color: gray;
+   font-weight: bold;
+}
+
+.process-transaction-button{
+   display: block;
+   margin: 0 auto;
+   width: 200px;
+}
+
+.primary-button {
+  /* Define the styles for the primary button */
+  background-color: #1677FF;
+  color: white;
+}
+
+.text-button {
+  /* Define the styles for the text button */
+  background-color: transparent;
+  color: black;
+}
+
 .app-footer {
   display: flex;
   justify-content: space-evenly;
