@@ -1,10 +1,12 @@
 import { useState, useContext, useMemo } from "react";
 
-import { CustomerForm } from "./Form";
+import { CustomerForm } from "./CustomerForm";
 
 import { Drawer, Typography, Image, Button, Divider, Empty } from "antd";
 
 import { Context as ProductContext } from "../../context/product/product.context";
+import { Context as ThemeContext } from "../../context/theme/theme.context";
+
 import { OrderSummary } from "./OrderSummary";
 
 export const RightDrawer = () => {
@@ -13,6 +15,7 @@ export const RightDrawer = () => {
   const [isMinusButtonHovered, setIsMinusButtonHovered] = useState({});
 
   const { allOrders, removeItemBy1, addToCart } = useContext(ProductContext);
+  const {isRightDrawerOpen,toggleRightDrawer} = useContext(ThemeContext)
 
   const handleDrawerClose = () => {
     setIsDrawerrOpen(!isDraweropen);
@@ -144,8 +147,8 @@ export const RightDrawer = () => {
     <>
       <Drawer
         placement="right"
-        onClose={handleDrawerClose}
-        open={isDraweropen}
+        onClose={toggleRightDrawer}
+        open={isRightDrawerOpen}
         autoFocus={false}
         mask={false}
       >

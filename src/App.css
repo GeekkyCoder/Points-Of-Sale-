@@ -39,6 +39,13 @@ body::-webkit-scrollbar {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
+.header-nav-container,
+.nav-dashboard,
+.nav-orders {
+  display: flex;
+  align-items: center;
+}
+
 .app-header .logo {
   width: 120px;
   aspect-ratio: 3/2;
@@ -209,20 +216,20 @@ body::-webkit-scrollbar {
   justify-content: space-between;
 }
 
-.sub-total-container  div {
-   color: gray;
-   font-weight: bold;
+.sub-total-container div {
+  color: gray;
+  font-weight: bold;
 }
 
-.process-transaction-button{
-   display: block;
-   margin: 0 auto;
-   width: 200px;
+.process-transaction-button {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
 }
 
 .primary-button {
   /* Define the styles for the primary button */
-  background-color: #1677FF;
+  background-color: #1677ff;
   color: white;
 }
 
