@@ -13,6 +13,7 @@ const ContextProvider = ({ children }) => {
   const [theme, setTheme] = useState({});
   const [toggleMenuCollapse, setToggleMenuCollapse] = useState(false);
   const [isRightDrawerOpen,setIsRightDrawerOpen] = useState(true)
+  const [currentView,setCurrentView] = useState('Dashboard')
 
   const handleThemeSwitchControll = (value) => {
     if (value) {
@@ -31,6 +32,10 @@ const ContextProvider = ({ children }) => {
     setIsRightDrawerOpen(!isRightDrawerOpen)
   }
 
+  const updateCurrentView = (view) => {
+    setCurrentView(view)
+  }
+
   return (
     <Context.Provider
       value={{
@@ -39,7 +44,9 @@ const ContextProvider = ({ children }) => {
         toggleMenuCollapse,
         handleToggleMenuCollapse,
         isRightDrawerOpen,
-        toggleRightDrawer
+        toggleRightDrawer,
+        currentView,
+        updateCurrentView
       }}
     >
       {children}

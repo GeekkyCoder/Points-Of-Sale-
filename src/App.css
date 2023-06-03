@@ -41,9 +41,11 @@ body::-webkit-scrollbar {
 
 .header-nav-container,
 .nav-dashboard,
-.nav-orders {
+.nav-orders,
+.nav-sales {
   display: flex;
   align-items: center;
+  font-weight: bold;
 }
 
 .app-header .logo {
